@@ -1,0 +1,27 @@
+BEGIN
+    FUNCTION insertionSort(arr)
+        FOR i := 1 TO length(arr) - 1 DO
+            // Store the current element
+            key := arr[i]
+            // Index for comparing elements in the sorted portion
+            j := i - 1
+
+            // Move elements of arr[0..i-1] that are greater than key to the right
+            WHILE (j >= 0 AND arr[j] > key) DO
+                arr[j + 1] := arr[j]
+                j := j - 1
+            END_WHILE
+
+            // Insert key into its correct position
+            arr[j + 1] := key
+        END_FOR
+
+        RETURN arr
+    END_FUNCTION
+
+    // Example usage
+    array := [12, 11, 13, 5, 6]
+    PRINT "Original array: " + array
+    sortedArray := insertionSort(array)
+    PRINT "Sorted array: " + sortedArray
+END
